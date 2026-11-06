@@ -87,4 +87,20 @@ public class CarrinhoTest {
     void carrinhoVazioNaoPagaFrete() {
         assertEquals(0.0, carrinho.getFrete(), 0.001);
     }
+
+    @Test
+    void removeProdutoExistente() {
+        carrinho.adicionar(new Produto("Caneta", 3.50));
+        carrinho.adicionar(new Produto("Caderno", 16.50));
+        assertTrue(carrinho.remover("Caneta"));
+        assertEquals(1, carrinho.getQuantidade());
+        assertEquals(16.50, carrinho.getSubtotal(), 0.001);
+    }
+
+    @Test
+    void removerProdutoInexistenteRetornaFalse() {
+        carrinho.adicionar(new Produto("Caneta", 3.50));
+        assertFalse(carrinho.remover("Borracha"));
+        assertEquals(1, carrinho.getQuantidade());
+    }
 }

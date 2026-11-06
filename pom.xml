@@ -39,6 +39,12 @@
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
         <version>3.11.0</version>
+        <configuration>
+          <compilerArgs>
+            <!-- esconde avisos de "Java 8 obsoleto" quando o JDK instalado é mais novo -->
+            <arg>-Xlint:-options</arg>
+          </compilerArgs>
+        </configuration>
       </plugin>
 
       <plugin>

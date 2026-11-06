@@ -51,4 +51,14 @@ public class Carrinho {
     public double getTotalComFrete() {
         return getTotal() + getFrete();
     }
+
+    public boolean remover(String nome) {
+        for (int i = 0; i < itens.size(); i++) {
+            if (itens.get(i).getNome().equals(nome)) {
+                itens.remove(i);
+                return true;
+            }
+        }
+        return false;
+    }
 }

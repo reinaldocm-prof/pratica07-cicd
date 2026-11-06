@@ -39,10 +39,13 @@ public class Carrinho {
     }
 
     public double getFrete() {
-        return 0.0;
+        if (itens.isEmpty() || getTotal() >= 200.0) {
+            return 0.0;
+        }
+        return 15.0;
     }
 
     public double getTotalComFrete() {
-        return 0.0;
+        return getTotal() + getFrete();
     }
 }

@@ -24,7 +24,12 @@ jobs:
       - name: Compilar, testar e empacotar
         run: mvn -B verify
 
-      - name: Criar a Release com o .jar
+      - name: Publicar o .jar na Release
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: gh release create "$GITHUB_REF_NAME" target/*.jar --title "$GITHUB_REF_NAME" --generate-notes
+        run: |
+          if gh release view "$GITHUB_REF_NAME" > /dev/null 2>&1; then
+            gh release upload "$GITHUB_REF_NAME" target/*.jar --clobber
+          else
+            gh release create "$GITHUB_REF_NAME" target/*.jar --title "$GITHUB_REF_NAME" --generate-notes
+          fi

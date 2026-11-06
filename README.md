@@ -1,2 +1,3 @@
-# pratica07-cicd
-Prática 07 - CI/CD com GitHub Actions (Gestão e Qualidade de Software)
+![CI](https://github.com/reinaldocm-prof/pratica07-cicd/actions/workflows/ci.yml/badge.svg)
+
+Aluno: Reinaldo Carlos Mendes (teste do professor)

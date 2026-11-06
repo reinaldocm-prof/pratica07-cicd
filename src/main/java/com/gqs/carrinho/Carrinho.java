@@ -5,6 +5,9 @@ import java.util.List;
 
 public class Carrinho {
 
+    public static final double VALOR_FRETE = 15.0;
+    public static final double MINIMO_FRETE_GRATIS = 200.0;
+
     private final List<Produto> itens = new ArrayList<>();
     private int desconto = 0;
 
@@ -39,10 +42,10 @@ public class Carrinho {
     }
 
     public double getFrete() {
-        if (itens.isEmpty() || getTotal() >= 200.0) {
+        if (itens.isEmpty() || getTotal() >= MINIMO_FRETE_GRATIS) {
             return 0.0;
         }
-        return 15.0;
+        return VALOR_FRETE;
     }
 
     public double getTotalComFrete() {

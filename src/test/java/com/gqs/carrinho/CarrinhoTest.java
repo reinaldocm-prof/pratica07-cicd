@@ -61,4 +61,30 @@ public class CarrinhoTest {
         assertThrows(IllegalArgumentException.class, () -> carrinho.aplicarDesconto(-1));
         assertThrows(IllegalArgumentException.class, () -> carrinho.aplicarDesconto(51));
     }
+
+    @Test
+    void cobraFreteAbaixoDe200() {
+        carrinho.adicionar(new Produto("Caderno", 199.99));
+        assertEquals(15.0, carrinho.getFrete(), 0.001);
+        assertEquals(214.99, carrinho.getTotalComFrete(), 0.001);
+    }
+
+    @Test
+    void freteGratisAPartirDe200() {
+        carrinho.adicionar(new Produto("Mochila", 200.0));
+        assertEquals(0.0, carrinho.getFrete(), 0.001);
+        assertEquals(200.0, carrinho.getTotalComFrete(), 0.001);
+    }
+
+    @Test
+    void freteConsideraTotalComDesconto() {
+        carrinho.adicionar(new Produto("Mochila", 210.0));
+        carrinho.aplicarDesconto(10); // total = 189,00
+        assertEquals(15.0, carrinho.getFrete(), 0.001);
+    }
+
+    @Test
+    void carrinhoVazioNaoPagaFrete() {
+        assertEquals(0.0, carrinho.getFrete(), 0.001);
+    }
 }

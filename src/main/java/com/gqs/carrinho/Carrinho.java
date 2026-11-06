@@ -37,4 +37,12 @@ public class Carrinho {
     public double getTotal() {
         return getSubtotal() * (100 - desconto) / 100.0;
     }
+
+    public double getFrete() {
+        return 0.0;
+    }
+
+    public double getTotalComFrete() {
+        return 0.0;
+    }
 }
